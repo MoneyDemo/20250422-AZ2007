@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }} - NewsApp{% endblock %}
+
+{% block content %}
+  <div class="card mb-4 animate__animated animate__fadeInUp">
+    {% if article.urlToImage %}
+    <img src="{{ article.urlToImage }}" class="card-img-top" alt="Article image">
+    {% endif %}
+    <div class="card-body">
+      <h1 class="card-title mb-3">{{ article.title }}</h1>
+      <p class="text-muted">By {{ article.author or 'Unknown' }} | {{ article.publishedAt[:10] }}</p>
+      <p class="card-text">{{ article.content or article.description }}</p>
+      <!-- Sentiment Analysis Results -->
+      <div class="mt-3 p-3 bg-light border rounded">
+        <h5>Sentiment Analysis</h5>
+        <p>Polarity: <strong>{{ sentiment.polarity }}</strong></p>
+        <p>Subjectivity: <strong>{{ sentiment.subjectivity }}</strong></p>
+      </div>
+      <a href="{{ article.url }}" target="_blank" class="btn btn-outline-primary">
+        <i class="fas fa-external-link-alt"></i> 閱讀原文
+      </a>
+    </div>
+  </div>
+{% endblock %}
