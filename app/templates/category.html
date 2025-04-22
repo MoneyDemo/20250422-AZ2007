@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ label }} - NewsApp{% endblock %}
+
+{% block content %}
+  <h1 class="mb-4 animate__animated animate__fadeInDown">{{ label }}</h1>
+  <div class="row">
+    {% for article in articles %}
+    <div class="col-md-6 mb-4">
+      <div class="card article-card animate__animated animate__fadeInUp">
+        {% if article.urlToImage %}
+        <img src="{{ article.urlToImage }}" class="card-img-top" alt="Article image">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ article.title }}</h5>
+          <p class="card-text">{{ article.description }}</p>
+          <a href="/{{ category }}/article/{{ loop.index0 }}" class="btn btn-primary">
+            <i class="fas fa-info-circle"></i> 查看詳情
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}

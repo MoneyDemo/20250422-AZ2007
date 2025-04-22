@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}首頁 - NewsApp{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% for key, info in categories.items() %}
+    <div class="col-md-3 mb-4">
+        <a href="/{{ key }}" class="text-decoration-none">
+            <div class="card category-card animate__animated animate__fadeInUp">
+                <div class="card-body text-center">
+                    <i class="fas {{ icons[key] }} fa-3x mb-2 text-primary"></i>
+                    <h5 class="card-title">{{ info.label }}</h5>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
