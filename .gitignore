@@ -1,0 +1,15 @@
+# Ignore environment variable files
+.env
+.env.example
+
+# Ignore VSCode settings that may contain secrets
+.vscode/mcp.json
+
+# Byte-compiled Python files
+tests/__pycache__/
+__pycache__/
+*.pyc
+
+# Ignore virtual environment
+envenv/
+newsenv/

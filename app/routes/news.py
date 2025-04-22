@@ -52,7 +52,7 @@ def show_category(cat: str):
     # Cache fetched headlines for detail view
     client.cache_headlines(cat, articles)
     # Render category template
-    return render_template('category.html', category=cat, label=settings['label'], articles=articles)
+    return render_template('category.html', categories=CATEGORY_MAP, icons=ICON_MAP, category=cat, label=settings['label'], articles=articles)
 
 @news_bp.route('/<string:cat>/article/<int:index>')
 def article_detail(cat: str, index: int):
@@ -78,4 +78,4 @@ def article_detail(cat: str, index: int):
     content_text = article.get('content') or article.get('description', '')
     sentiment = analyzer.analyze(content_text)
     # Render detail template with sentiment analysis results
-    return render_template('detail.html', article=article, sentiment=sentiment)
+    return render_template('detail.html', categories=CATEGORY_MAP, icons=ICON_MAP, article=article, sentiment=sentiment)
